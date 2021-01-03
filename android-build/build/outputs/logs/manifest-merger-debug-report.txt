@@ -1,0 +1,185 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:2:1-92:12
+INJECTED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:2:1-92:12
+INJECTED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:2:1-92:12
+INJECTED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:2:1-92:12
+INJECTED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:2:1-92:12
+	package
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:2:11-53
+	android:versionName
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:2:113-138
+		INJECTED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml
+		INJECTED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:2:54-112
+	android:versionCode
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:2:139-162
+		INJECTED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml
+		INJECTED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml
+	android:installLocation
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:2:163-193
+uses-sdk
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:3:5-73
+	android:targetSdkVersion
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:3:42-71
+	android:minSdkVersion
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:3:15-41
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:7:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:8:22-78
+supports-screens
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:14:5-135
+	android:largeScreens
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:14:23-50
+	android:smallScreens
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:14:106-133
+	android:normalScreens
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:14:51-79
+	android:anyDensity
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:14:80-105
+application
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:16:5-90:19
+	android:extractNativeLibs
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:16:144-176
+	android:label
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:16:117-143
+	android:hardwareAccelerated
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:16:18-52
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:16:53-116
+activity#org.qtproject.qt5.android.bindings.QtActivity
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:17:9-86:16
+	android:screenOrientation
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:20:19-58
+	android:label
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:19:19-45
+	android:launchMode
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:21:19-49
+	android:configChanges
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:17:19-188
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:18:19-79
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:22:13-25:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:23:17-68
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:23:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:24:17-76
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:24:27-74
+meta-data#android.app.lib_name
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:31:13-88
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:31:60-86
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:31:24-59
+meta-data#android.app.qt_sources_resource_id
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:32:13-112
+	android:resource
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:32:74-110
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:32:24-73
+meta-data#android.app.repository
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:33:13-87
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:33:62-85
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:33:24-61
+meta-data#android.app.qt_libs_resource_id
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:34:13-106
+	android:resource
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:34:71-104
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:34:24-70
+meta-data#android.app.bundled_libs_resource_id
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:35:13-116
+	android:resource
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:35:76-114
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:35:24-75
+meta-data#android.app.bundle_local_qt_libs
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:37:13-91
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:37:72-89
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:37:24-71
+meta-data#android.app.use_local_qt_libs
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:40:13-88
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:40:69-86
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:40:24-68
+meta-data#android.app.libs_prefix
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:41:13-100
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:41:63-98
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:41:24-62
+meta-data#android.app.load_local_libs_resource_id
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:42:13-122
+	android:resource
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:42:79-120
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:42:24-78
+meta-data#android.app.load_local_jars
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:43:13-102
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:43:67-100
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:43:24-66
+meta-data#android.app.static_init_classes
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:44:13-89
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:44:71-87
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:44:24-70
+meta-data#android.app.ministro_not_found_msg
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:48:13-122
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:48:24-70
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:48:71-120
+meta-data#android.app.ministro_needed_msg
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:49:13-116
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:49:24-67
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:49:68-114
+meta-data#android.app.fatal_error_msg
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:50:13-108
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:50:24-63
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:50:64-106
+meta-data#android.app.unsupported_android_version
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:51:13-132
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:51:24-75
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:51:76-130
+meta-data#android.app.background_running
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:70:13-93
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:70:70-91
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:70:24-69
+meta-data#android.app.auto_screen_scale_factor
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:74:13-99
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:74:76-97
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:74:24-75
+meta-data#android.app.extract_android_style
+ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:84:13-98
+	android:value
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:84:73-96
+	android:name
+		ADDED from C:\Users\huseyin\Documents\TakvimTest\android-build\AndroidManifest.xml:84:24-72

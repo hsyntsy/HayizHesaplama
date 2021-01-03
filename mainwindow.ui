@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>415</width>
-    <height>541</height>
+    <width>462</width>
+    <height>633</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,28 +15,28 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
        <string>İlk Gün:</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
+    <item row="1" column="1">
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>Son Gün:</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="4" column="0">
      <widget class="QDateEdit" name="startDateEdit">
       <property name="calendarPopup">
        <bool>true</bool>
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
+    <item row="4" column="1">
      <widget class="QDateEdit" name="finishDateEdit">
       <property name="enabled">
        <bool>false</bool>
@@ -49,83 +49,163 @@
       </property>
      </widget>
     </item>
-    <item row="11" column="0" colspan="2">
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item row="12" column="0" colspan="2">
-     <widget class="QTextEdit" name="messageTextEdit"/>
-    </item>
-    <item row="13" column="1">
+    <item row="15" column="1">
      <widget class="QPushButton" name="pushButton">
       <property name="text">
        <string>HESAPLA</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0" colspan="2">
-     <widget class="CalendarWidget" name="calendarWidget">
-      <property name="gridVisible">
-       <bool>true</bool>
+    <item row="0" column="0" colspan="2">
+     <layout class="QGridLayout" name="upperGridLayout">
+      <property name="bottomMargin">
+       <number>30</number>
       </property>
-      <property name="verticalHeaderFormat">
-       <enum>QCalendarWidget::NoVerticalHeader</enum>
-      </property>
-      <property name="dateEditEnabled">
-       <bool>true</bool>
-      </property>
-     </widget>
+      <item row="7" column="0">
+       <widget class="QPushButton" name="finishTemizPushButton">
+        <property name="text">
+         <string>İşaretlemeyi Bitir</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="CalendarWidget" name="calendarWidget">
+        <property name="gridVisible">
+         <bool>true</bool>
+        </property>
+        <property name="verticalHeaderFormat">
+         <enum>QCalendarWidget::NoVerticalHeader</enum>
+        </property>
+        <property name="dateEditEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QPushButton" name="startTemizPushButton">
+        <property name="text">
+         <string>İşaretlemeyi Başlat</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>v1_1</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>TEMİZ GÜNLER</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>KİRLİ GÜNLER</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QPushButton" name="finishKirliPushButton">
+        <property name="text">
+         <string>İşaretlemeyi Bitir</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="resources.qrc">:/icons/yellow.ico</pixmap>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Kaza</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="6" column="1">
+       <widget class="QPushButton" name="startKirliPushButton">
+        <property name="text">
+         <string>İşaretlemeyi Başlat</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_10">
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_9">
+          <property name="text">
+           <string>Kılınacak</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+      </item>
+      <item row="3" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_4"/>
+      </item>
+     </layout>
     </item>
-    <item row="9" column="0">
-     <widget class="QPushButton" name="finishTemizPushButton">
-      <property name="text">
-       <string>İşaretlemeyi Bitir</string>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="1">
-     <widget class="QPushButton" name="finishKirliPushButton">
-      <property name="text">
-       <string>İşaretlemeyi Bitir</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="0">
-     <widget class="QPushButton" name="startTemizPushButton">
-      <property name="text">
-       <string>İşaretlemeyi Başlat</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="1">
-     <widget class="QPushButton" name="startKirliPushButton">
-      <property name="text">
-       <string>İşaretlemeyi Başlat</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="1">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>KİRLİ GÜNLER</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>TEMİZ GÜNLER</string>
-      </property>
-     </widget>
-    </item>
-    <item row="10" column="0">
+    <item row="5" column="0">
      <widget class="QLabel" name="label_5">
       <property name="text">
        <string>Temiz-Kirli olarak giriş yapın:</string>
       </property>
      </widget>
+    </item>
+    <item row="6" column="0" colspan="2">
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+    <item row="7" column="0" colspan="2">
+     <widget class="QTextEdit" name="messageTextEdit"/>
     </item>
    </layout>
   </widget>
@@ -134,7 +214,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>415</width>
+     <width>462</width>
      <height>20</height>
     </rect>
    </property>
@@ -148,6 +228,8 @@
    <header>calendarwidget.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

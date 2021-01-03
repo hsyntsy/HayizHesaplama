@@ -7,7 +7,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+   /* QLayoutItem* item = nullptr;
+    while ((item = ui->upperGridLayout->takeAt(0)) != NULL)
+    {
+        //item->widget()->hide();
+        //delete item->widget();
+       // delete item;
 
+
+    }*/
     QString filename;
 
     filename = ":/qss/coffee.qss";
@@ -41,72 +49,87 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
 
-    m_temizlerS.clear();
-    m_kirlilerS.clear();
-    ui->messageTextEdit->clear();
-    m_temizler.clear();
+
+    m_prevDevamliKanamaTGun = 0;
+    m_prevOzurKGun = 0;
+    m_prevTemiz = 0;
+    m_prevTemizIdx = 0;
+    m_normalT = 0;
+    m_normalK = 0;
+    m_prevPrevTemiz = 0;
+    m_prevOzur = 0;
     m_kirliler.clear();
+    m_temizler.clear();
+    m_kirlilerS.clear();
+    m_temizlerS.clear();
+    m_temizdenHukmi = false;
+
+    m_temizSPopped = true;
     m_kirliTarihler.clear();
     m_temizTarihler.clear();
+    m_list.clear();
+    m_ozurKaniTemizDevam = false;
+    m_nextTemizFasit = false;
+    m_aSolved = false;
+    m_addNextTemiz = false;
+
+    ui->messageTextEdit->clear();
 
     m_arizaType = NU_LL;
 
 
-    m_nextTemizFasit = false;
-        m_ozurKaniTemizDevam = false;
-
-        QString input = ui->lineEdit->text();
-        bool isProcessingT = true;
-        m_list = input.split("-");
+    QString input = ui->lineEdit->text();
+    bool isProcessingT = true;
+    m_list = input.split("-");
 
 
 
-        int n = 3;
-        QString ilkStr = m_list.at(0);
-        int ilk = ilkStr.remove("-").toInt();
-        int ilkT = 0, ilkK = 0, ikinciT = 0;
+    int n = 3;
+    QString ilkStr = m_list.at(0);
+    int ilk = ilkStr.remove("-").toInt();
+    int ilkT = 0, ilkK = 0, ikinciT = 0;
 
-        if(ilk >14){
-            isProcessingT = false;
-            QString ilkTStr = m_list.at(0);
-            ilkT = ilkTStr.remove("-").toInt();
+    if(ilk >14){
+        isProcessingT = false;
+        QString ilkTStr = m_list.at(0);
+        ilkT = ilkTStr.remove("-").toInt();
 
-            QString ilkKStr = m_list.at(1);
-            ilkK = ilkKStr.remove("-").toInt();
+        QString ilkKStr = m_list.at(1);
+        ilkK = ilkKStr.remove("-").toInt();
 
-            QString ikinciTStr = m_list.at(2);
-            ikinciT = ikinciTStr.remove("-").toInt();
+        QString ikinciTStr = m_list.at(2);
+        ikinciT = ikinciTStr.remove("-").toInt();
 
-            if(m_list.size() < 4){
-                QMessageBox msgBox;
-                qDebug() << "invalid input";
-                msgBox.setText("Yeterli giriş sağlanamamıştır. En az 4 dönem bilgisi girilmelidir.");
-                msgBox.exec();
-            }
-
-            n = 3;
-        }else{
-            isProcessingT = true;
-            QString ilkTStr = m_list.at(1);
-            ilkT = ilkTStr.remove("-").toInt();
-
-            QString ilkKStr = m_list.at(2);
-            ilkK = ilkKStr.remove("-").toInt();
-
-            QString ikinciTStr = m_list.at(3);
-            ikinciT = ikinciTStr.remove("-").toInt();
-
-
-
-            if(m_list.size() < 5){
-                QMessageBox msgBox;
-                qDebug() << "invalid input";
-                msgBox.setText("Yeterli giriş sağlanamamıştır. En az 5 dönem bilgisi girilmelidir.");
-                msgBox.exec();
-            }
-
-            n = 4;
+        if(m_list.size() < 4){
+            QMessageBox msgBox;
+            qDebug() << "invalid input";
+            msgBox.setText("Yeterli giriş sağlanamamıştır. En az 4 dönem bilgisi girilmelidir.");
+            msgBox.exec();
         }
+
+        n = 3;
+    }else{
+        isProcessingT = true;
+        QString ilkTStr = m_list.at(1);
+        ilkT = ilkTStr.remove("-").toInt();
+
+        QString ilkKStr = m_list.at(2);
+        ilkK = ilkKStr.remove("-").toInt();
+
+        QString ikinciTStr = m_list.at(3);
+        ikinciT = ikinciTStr.remove("-").toInt();
+
+
+
+        if(m_list.size() < 5){
+            QMessageBox msgBox;
+            qDebug() << "invalid input";
+            msgBox.setText("Yeterli giriş sağlanamamıştır. En az 5 dönem bilgisi girilmelidir.");
+            msgBox.exec();
+        }
+
+        n = 4;
+    }
 
 
 
@@ -152,6 +175,8 @@ void MainWindow::on_pushButton_clicked()
 
         qDebug() << "\n\n\n" <<i << "  " << val << "  " << m_arizaType << "   " << m_nextTemizFasit;
 
+        ui->messageTextEdit->append("___________" + QString::number(val) + "_________");
+
         ui->messageTextEdit->append("___________" + QString::number(i) + "_________");
 
         ///kirli
@@ -186,10 +211,11 @@ void MainWindow::on_pushButton_clicked()
                     m_kirlilerS.push_back(val);
                 }
             }else{
+                ui->messageTextEdit->append("\n\n" + QString::number(val) + " gün namaz kılınmalı.\n");
+
                 if(m_temizdenHukmi){
                     m_kirliler.pop_back();
                     m_kirliler.replace(m_kirliler.size()-1, m_kirliler.last()+val);
-
                 }
             }
 
@@ -232,7 +258,18 @@ void MainWindow::on_pushButton_clicked()
                 qDebug() << "m_temizler.last() " << m_temizler.last();
                 qDebug() << "m_temizlerS.last() " << m_temizlerS.last();
 
-                if( m_temizlerS.last() >= m_temizler.last()
+                m_isProcessingT = isProcessingT;
+
+                if(  (m_kirliler.last() >= m_temizlerS.last() + m_kirlilerS.last() + 3)
+                       && (m_kirliler.last() < m_temizlerS.last() + 2*m_kirlilerS.last())){
+
+                    m_isMuchKirli = true;
+                    solveB();
+
+                }
+
+
+                else if( m_temizlerS.last() >= m_temizler.last()
                         && m_kirliler.last() - (m_temizlerS.last() -  m_temizler.last()) >= m_kirlilerS.last()){
                     solveA();
 
@@ -266,6 +303,9 @@ void MainWindow::on_pushButton_clicked()
 
                 ui->messageTextEdit->append("Son Kirli: " + QString::number(m_kirliler.last()));
 
+/// 17-6-15-4-21-11-8-9-16-7-16-13-5-14-8
+
+                qDebug() << "------------- " << val << " ------------------------";
 
                 qDebug() << "m_kirliler.last() " << m_kirliler.last();
                 qDebug() << "m_kirlilerS.last() " << m_kirlilerS.last();
@@ -281,7 +321,27 @@ void MainWindow::on_pushButton_clicked()
 
                 qDebug() << ddd;
 
+                m_isProcessingT = isProcessingT;
+
+                if(  (m_kirliler.last() >= m_temizlerS.last() + m_kirlilerS.last() + 3)
+                       && (m_kirliler.last() < m_temizlerS.last() + 2*m_kirlilerS.last())){
+
+                    m_isMuchKirli = true;
+                    solveB();
+
+                }
+/*
                 if( m_temizlerS.last() >= m_temizler.last()
+                        && m_kirliler.last() - (m_temizlerS.last() +  m_kirlilerS.last()) >= m_kirlilerS.last()){
+                    solveA();
+                }else if( m_temizlerS.last() >= m_temizler.last()
+                          && m_kirliler.last() - (m_temizlerS.last() +  m_kirlilerS.last()) < m_kirlilerS.last()
+                          && m_kirliler.last() - (m_temizlerS.last() +  m_kirlilerS.last()) > 2){
+                      solveB();
+                  }
+
+
+                else */ else if( m_temizlerS.last() >= m_temizler.last()
                         && m_kirliler.last() - (m_temizlerS.last() -  m_temizler.last()) >= m_kirlilerS.last()){
                     solveA();
                 }else if(2 >= m_kirlilerS.last() - (m_temizler.last() - m_temizlerS.last())
@@ -402,13 +462,17 @@ void MainWindow::on_pushButton_clicked()
 ///20-5-18-6-22-4-12-8
             ///sahih kontrolleri
             if(val > 14){
+                qDebug() << "==  sahih temizlere eklendi: " << val;
                 m_temizlerS.push_back(val);
 
-                if(m_kirliler.last() > 10 || m_kirliler.last() < 3){
-                    if(m_temizlerS.size() > 1)
+                if((m_kirliler.last() > 10 || m_kirliler.last() < 3) && !m_isMuchKirli){
+                    if(m_temizlerS.size() > 1){
                         m_temizlerS.pop_back();
+                    }
                 }
-                if(m_addNextTemiz){
+
+
+                if(m_addNextTemiz && m_isMuchKirli){
                     m_addNextTemiz = false;
                     qDebug() << "---*-*-*-*---m_addNextTemiz " << m_addNextTemiz << " : " << m_nextTemizEklenecek;
 
@@ -441,6 +505,7 @@ void MainWindow::on_pushButton_clicked()
                 }
 
 
+                m_isMuchKirli = false;
 
 
             }
@@ -538,7 +603,10 @@ void MainWindow::on_pushButton_clicked()
                 }
                 QString dates = "";
                 for(int a = 0; a < m_kirliler.last(); a++){
-                    dates += ui->startDateEdit->date().addDays(kirliler+temizler+a+1).toString()+"\n\n";
+                    QDate dt = ui->startDateEdit->date().addDays(kirliler+temizler+a+1);
+                    dates += dt.toString()+"\n\n";
+                    paintCalender(dt, 3);
+
                 }
 
                 QString msg = QString::number(m_kirliler.size()+1) + ". kirli\n" + QString::number(m_kirliler.last()) + " günü kaza et.\n";
@@ -635,6 +703,7 @@ void MainWindow::solveA()
 
    for(int i = 0; i < oncekiKazaSayisi; i++){
        QDate dt = ui->startDateEdit->date().addDays(ilkKazaGecenGun+i);
+       paintCalender(dt, 3);
         dates.append(dt.toString()+"\n");
    }
 
@@ -652,29 +721,97 @@ void MainWindow::solveA()
    int diffSonKan = m_kirliler.last() - sonrakiKilinacakSayisi;
    int sonradanKilinacakGecenGun = ilkKazaGecenGun + diffSonKan;
 
+   int sahT = m_temizlerS.last();
+   int sahK = m_kirlilerS.last();
+   qDebug() << "---sonrakiKilinacakSayisi: " << sonrakiKilinacakSayisi;
+
    if(sonrakiKilinacakSayisi < 0)
        sonrakiKilinacakSayisi = 0;
 
-      dates = "";
-      for(int i = 0; i < sonrakiKilinacakSayisi; i++){
-          QDate dt = ui->startDateEdit->date().addDays(sonradanKilinacakGecenGun+i);
-          dates.append(dt.toString()+"\n");
-      }
+   if(sonrakiKilinacakSayisi <= sahT){
+       int diffSonKan = m_kirliler.last() - sonrakiKilinacakSayisi;
 
-     /* m_temizler.replace(m_temizler.size()-1, m_temizler.last()+sonrakiKilinacakSayisi);
-      m_temizdenHukmi = true;
+       int sonradanKilinacakGecenGun = ilkKazaGecenGun + diffSonKan;
+
+       dates = "";
+       for(int i = 0; i < sonrakiKilinacakSayisi; i++){
+           QDate dt = ui->startDateEdit->date().addDays(sonradanKilinacakGecenGun+i);
+           paintCalender(dt, 4);
+           dates.append(dt.toString()+"\n");
+       }
+
+       //20-5-22-6-24-13
+
+      /* m_temizler.replace(m_temizler.size()-1, m_temizler.last()+sonrakiKilinacakSayisi);
+       m_temizdenHukmi = true;
 */
-     // m_temizdenHukmi = true;
-      m_addNextTemiz = true;
-      m_nextTemizEklenecek = sonrakiKilinacakSayisi;
+      // m_temizdenHukmi = true;
+       m_addNextTemiz = true;
+       m_nextTemizEklenecek = sonrakiKilinacakSayisi;
 
 
 
+       msg = "Şu " + QString::number(sonrakiKilinacakSayisi) + " gün namaz kılınmalı:\n\n";
+       ui->messageTextEdit->append("\n\n" + msg + dates + "\n");
+   }
 
-      msg = "Şu " + QString::number(sonrakiKilinacakSayisi) + " gün namaz kılınmalı:\n\n";
-      ui->messageTextEdit->append("\n\n" + msg + dates + "\n");
 
 
+   else{
+       bool isTemiz = !m_isProcessingT;
+       while(sonrakiKilinacakSayisi > 1){
+           qDebug() << "---sonrakiKilinacakSayisi: " << sonrakiKilinacakSayisi;
+
+           if(isTemiz){
+
+               int kilinacakMiktar;
+               if(sonrakiKilinacakSayisi > sahT){
+                   kilinacakMiktar = sahT;
+               }else{
+                   kilinacakMiktar = sonrakiKilinacakSayisi;
+               }
+               int diffSonKan = m_kirliler.last() - kilinacakMiktar;
+
+               int sonradanKilinacakGecenGun = ilkKazaGecenGun + diffSonKan;
+
+               dates = "";
+               for(int i = 0; i < kilinacakMiktar; i++){
+                   QDate dt = ui->startDateEdit->date().addDays(sonradanKilinacakGecenGun+i);
+                   paintCalender(dt, 4);
+                   dates.append(dt.toString()+"\n");
+               }
+
+               //20-5-22-6-24-13
+
+
+               qDebug() << "sonrakiKilinacakSayisi: " << sonrakiKilinacakSayisi;
+               qDebug() << "kilinacakMiktar: " << kilinacakMiktar;
+
+
+
+              /* m_temizler.replace(m_temizler.size()-1, m_temizler.last()+kilinacakMiktar);
+               m_temizdenHukmi = true;
+*/
+
+             //  m_temizdenHukmi = true;
+               m_addNextTemiz = true;
+               m_nextTemizEklenecek = sonrakiKilinacakSayisi;
+
+
+               msg = "Şu " + QString::number(kilinacakMiktar) + " gün namaz kılınmalı:\n\n";
+               ui->messageTextEdit->append("\n\n" + msg + dates + "\n");
+
+                sonrakiKilinacakSayisi -= kilinacakMiktar;
+                isTemiz = false;
+           }else{
+               sonrakiKilinacakSayisi -= sahK;
+               msg = QString::number(sahK) + " gün hayız.\n";
+               ui->messageTextEdit->append( msg + "\n");
+               isTemiz = true;
+           }
+
+       }
+   }
 
 
 }
@@ -701,6 +838,33 @@ void MainWindow::solveB()
 
     qDebug() << sss;
 
+    sss.clear();
+     sss = "m_temizlerS:  ";
+    for(int t = 0; t < m_temizlerS.size(); t++){
+        sss = sss + "  " + QString::number(m_temizlerS.at(t));
+    }
+
+    qDebug() << sss;
+
+
+    sss.clear();
+     sss = "m_kirliler:  ";
+    for(int t = 0; t < m_kirliler.size(); t++){
+        sss = sss + "  " + QString::number(m_kirliler.at(t));
+    }
+
+    qDebug() << sss;
+
+
+
+    sss.clear();
+     sss = "m_kirlilerS:  ";
+    for(int t = 0; t < m_kirlilerS.size(); t++){
+        sss = sss + "  " + QString::number(m_kirlilerS.at(t));
+    }
+
+    qDebug() << sss;
+
     int oncekiKazaSayisi = m_temizlerS.last()- m_temizler.last();
 
     int ilkKazaGecenGun = 0;
@@ -721,6 +885,7 @@ void MainWindow::solveB()
 
     for(int i = 0; i < oncekiKazaSayisi; i++){
         QDate dt = ui->startDateEdit->date().addDays(ilkKazaGecenGun+i);
+        paintCalender(dt, 3);
         dates.append(dt.toString()+"\n");
     }
 
@@ -728,11 +893,15 @@ void MainWindow::solveB()
     ui->messageTextEdit->append("\n\n" + msg + dates + "\n");
 
 
-    if((m_temizler.last() - m_temizlerS.last()) > 0)
+    if(m_isMuchKirli){
+        ui->messageTextEdit->append("\nb much kirli\n");
+        m_kirlilerS.push_back( m_kirliler.last() - (m_kirlilerS.last() + m_temizlerS.last()));
+    }
+    else if((m_temizler.last() - m_temizlerS.last()) > 0){
         m_kirlilerS.push_back(m_kirlilerS.last() - (m_temizler.last() - m_temizlerS.last()));
-    else
-        m_kirlilerS.push_back( - (m_temizler.last() - m_temizlerS.last()));
-
+   } else{
+        m_kirlilerS.push_back( m_kirliler.last() + (m_temizler.last() - m_temizlerS.last()));
+    }
 
 
     ui->messageTextEdit->append("B  sahih Kirli gün sayısı değişti: " + QString::number(m_kirlilerS.last()));
@@ -751,7 +920,7 @@ void MainWindow::solveB()
    int sonrakiKilinacakSayisi = m_kirliler.last() - oncekiKazaSayisi - m_kirlilerS.last();
 
 
-
+//  8-20-7-19-12-10-7-13-2-20
 
    int sahT = m_temizlerS.last();
    int sahK = m_kirlilerS.last();
@@ -768,6 +937,7 @@ void MainWindow::solveB()
        dates = "";
        for(int i = 0; i < sonrakiKilinacakSayisi; i++){
            QDate dt = ui->startDateEdit->date().addDays(sonradanKilinacakGecenGun+i);
+           paintCalender(dt, 4);
            dates.append(dt.toString()+"\n");
        }
 
@@ -789,7 +959,7 @@ void MainWindow::solveB()
 
 
    else{
-       bool isTemiz = true;
+       bool isTemiz = !m_isProcessingT;
        while(sonrakiKilinacakSayisi > 1){
            qDebug() << "---sonrakiKilinacakSayisi: " << sonrakiKilinacakSayisi;
 
@@ -808,6 +978,7 @@ void MainWindow::solveB()
                dates = "";
                for(int i = 0; i < kilinacakMiktar; i++){
                    QDate dt = ui->startDateEdit->date().addDays(sonradanKilinacakGecenGun+i);
+                   paintCalender(dt, 4);
                    dates.append(dt.toString()+"\n");
                }
 
@@ -853,6 +1024,34 @@ void MainWindow::solveB()
    }
    qDebug() << ddd;
 
+
+   sss.clear();
+    sss = "m_temizlerS:  ";
+   for(int t = 0; t < m_temizlerS.size(); t++){
+       sss = sss + "  " + QString::number(m_temizlerS.at(t));
+   }
+
+   qDebug() << sss;
+
+
+   sss.clear();
+    sss = "m_kirliler:  ";
+   for(int t = 0; t < m_kirliler.size(); t++){
+       sss = sss + "  " + QString::number(m_kirliler.at(t));
+   }
+
+   qDebug() << sss;
+
+
+
+   sss.clear();
+    sss = "m_kirlilerS:  ";
+   for(int t = 0; t < m_kirlilerS.size(); t++){
+       sss = sss + "  " + QString::number(m_kirlilerS.at(t));
+   }
+
+   qDebug() << sss;
+
    qDebug() << "-------------m_addNextTemiz " << m_addNextTemiz << " : " << m_nextTemizEklenecek;
 
 }
@@ -886,43 +1085,137 @@ void MainWindow::solveC()
     }
 
     int sonradanKilinacakGecenGun = ilkKazaGecenGun + diffSonKan;
-
-
-    if(sonradanKilinacak < 0)
-        sonradanKilinacak = 0;
-
-
-    QString dates = "";
-    for(int i = 0; i < sonradanKilinacak; i++){
-        QDate dt = ui->startDateEdit->date().addDays(sonradanKilinacakGecenGun+i);
-        dates.append(dt.toString()+"\n");
-    }
-
-
-   /* m_temizler.replace(m_temizler.size()-1, m_temizler.last()+sonradanKilinacak);
-    m_temizdenHukmi = true;
-
-*/
-
-  //  m_temizdenHukmi = true;
-    m_addNextTemiz = true;
-    m_nextTemizEklenecek = sonradanKilinacak;
-
-
     //20-5-22-6-24-13
     m_temizlerS.push_back(m_temizler.last());
     m_temizlerS.push_back(m_temizler.last());
 
     ui->messageTextEdit->append("C  sahih Temiz gün sayısı değişti: " + QString::number(m_temizlerS.last()));
 
-    QString msg = "Şu " + QString::number(sonradanKilinacak) + " gün namaz kılınmalı:\n\n";
-    ui->messageTextEdit->append("\n\n" + msg + dates + "\n");
+
+    QString dates = "";
+
+    m_addNextTemiz = true;
+    m_nextTemizEklenecek = sonradanKilinacak;
+
+
+
+    QString msg;
 
 
 
 
 
 
+
+    int sahT = m_temizlerS.last();
+    int sahK = m_kirlilerS.last();
+    qDebug() << "---sonradanKilinacak: " << sonradanKilinacak;
+
+    if(sonradanKilinacak < 0)
+        sonradanKilinacak = 0;
+
+    if(sonradanKilinacak <= sahT){
+        int diffSonKan = m_kirliler.last() - sonradanKilinacak;
+
+        int sonradanKilinacakGecenGun = ilkKazaGecenGun + diffSonKan;
+
+        dates = "";
+        for(int i = 0; i < sonradanKilinacak; i++){
+            QDate dt = ui->startDateEdit->date().addDays(sonradanKilinacakGecenGun+i);
+            paintCalender(dt, 4);
+            dates.append(dt.toString()+"\n");
+        }
+
+        //20-5-22-6-24-13
+
+       /* m_temizler.replace(m_temizler.size()-1, m_temizler.last()+sonradanKilinacak);
+        m_temizdenHukmi = true;
+ */
+       // m_temizdenHukmi = true;
+        m_addNextTemiz = true;
+        m_nextTemizEklenecek = sonradanKilinacak;
+
+
+
+        msg = "Şu " + QString::number(sonradanKilinacak) + " gün namaz kılınmalı:\n\n";
+        ui->messageTextEdit->append("\n\n" + msg + dates + "\n");
+    }
+
+
+
+    else{
+        bool isTemiz = !m_isProcessingT;
+        while(sonradanKilinacak > 1){
+            qDebug() << "---sonradanKilinacak: " << sonradanKilinacak;
+
+            if(isTemiz){
+
+                int kilinacakMiktar;
+                if(sonradanKilinacak > sahT){
+                    kilinacakMiktar = sahT;
+                }else{
+                    kilinacakMiktar = sonradanKilinacak;
+                }
+                int diffSonKan = m_kirliler.last() - kilinacakMiktar;
+
+                int sonradanKilinacakGecenGun = ilkKazaGecenGun + diffSonKan;
+
+                dates = "";
+                for(int i = 0; i < kilinacakMiktar; i++){
+                    QDate dt = ui->startDateEdit->date().addDays(sonradanKilinacakGecenGun+i);
+                    paintCalender(dt, 4);
+                    dates.append(dt.toString()+"\n");
+                }
+
+                //20-5-22-6-24-13
+
+
+                qDebug() << "sonradanKilinacak: " << sonradanKilinacak;
+                qDebug() << "kilinacakMiktar: " << kilinacakMiktar;
+
+
+
+               /* m_temizler.replace(m_temizler.size()-1, m_temizler.last()+kilinacakMiktar);
+                m_temizdenHukmi = true;
+ */
+
+              //  m_temizdenHukmi = true;
+                m_addNextTemiz = true;
+                m_nextTemizEklenecek = sonradanKilinacak;
+
+
+                msg = "Şu " + QString::number(kilinacakMiktar) + " gün namaz kılınmalı:\n\n";
+                ui->messageTextEdit->append("\n\n" + msg + dates + "\n");
+
+                 sonradanKilinacak -= kilinacakMiktar;
+                 isTemiz = false;
+            }else{
+                sonradanKilinacak -= sahK;
+                msg = QString::number(sahK) + " gün hayız.\n";
+                ui->messageTextEdit->append( msg + "\n");
+                isTemiz = true;
+            }
+
+        }
+    }
+
+
+
+
+
+}
+
+void MainWindow::paintCalender(QDate date, int type)
+{
+    ui->calendarWidget->repaint();
+
+    ui->calendarWidget->clicked(QDate(0,0,0));
+    ui->calendarWidget->clicked(date);
+    ui->calendarWidget->setHighlightType(type);
+    ui->calendarWidget->repaint();
+    ui->calendarWidget->setSelectedDate(date);
+    ui->calendarWidget->setSelectedDate(QDate(0,0,0));
+    ui->calendarWidget->setSelectedDate(date);
 }
 
 void MainWindow::startTemiz()

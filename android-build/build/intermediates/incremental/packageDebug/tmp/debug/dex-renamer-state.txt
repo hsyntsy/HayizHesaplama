@@ -1,0 +1,4 @@
+#Sun Jan 03 14:15:33 EET 2021
+base.0=C\:\\Users\\huseyin\\Documents\\TakvimTest\\android-build\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

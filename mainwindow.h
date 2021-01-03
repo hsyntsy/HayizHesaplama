@@ -46,11 +46,16 @@ private:
     bool m_addNextTemiz = false;
     int m_nextTemizEklenecek;
 
+    bool m_isMuchKirli = false;
     bool m_processForError;
+
+    bool m_isProcessingT;
 
     void solveA();
     void solveB();
     void solveC();
+
+    void paintCalender(QDate date, int type);
 
 
 private slots:

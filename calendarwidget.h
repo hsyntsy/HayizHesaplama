@@ -39,7 +39,7 @@ protected:
 
 private:
     int m_highlightType = 0;
-    QList<QDate> *m_temizGunler, *m_kirliGunler;
+    QList<QDate> *m_temizGunler, *m_kirliGunler, *m_kazaGunleri, *m_kilinacakGunler;
 
 
 

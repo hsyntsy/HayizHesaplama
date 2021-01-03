@@ -11,5 +11,6 @@
         <file>qss/MaterialDark.qss</file>
         <file>qss/ssa.qss</file>
         <file>qss/Ubuntu.qss</file>
+        <file>icons/yellow.ico</file>
     </qresource>
 </RCC>

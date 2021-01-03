@@ -1,0 +1,45 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\huseyin\\Documents\\TakvimTest\\android-build\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\huseyin\\Documents\\TakvimTest\\android-build\\res\\values\\libs.xml",
+                    "from": {
+                        "startLines": "9,20,13,2",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "301,610,360,57",
+                        "endLines": "11,22,18,4",
+                        "endColumns": "12,12,12,12",
+                        "endOffsets": "352,737,602,170"
+                    },
+                    "to": {
+                        "startLines": "2,5,8,14",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,109,239,484",
+                        "endLines": "4,7,13,16",
+                        "endColumns": "12,12,12,12",
+                        "endOffsets": "104,234,479,595"
+                    }
+                },
+                {
+                    "source": "C:\\Qt\\5.14.2\\android\\src\\android\\java\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "5,4,3,6",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "324,201,88,433",
+                        "endColumns": "107,121,111,97",
+                        "endOffsets": "427,318,195,526"
+                    },
+                    "to": {
+                        "startLines": "17,18,19,20",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "600,708,830,942",
+                        "endColumns": "107,121,111,97",
+                        "endOffsets": "703,825,937,1035"
+                    }
+                }
+            ]
+        }
+    ]
+}
